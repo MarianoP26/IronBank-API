@@ -3,16 +3,11 @@ package com.finalproject.ironhack.models.Accounts;
 import com.finalproject.ironhack.consts.Consts;
 import com.finalproject.ironhack.models.Accounts.interfaces.SecretKeyStatusAccount;
 import com.finalproject.ironhack.models.Agents.AccountHolder;
-import com.finalproject.ironhack.utils.TimeHelperClass;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotNull;
 import com.finalproject.ironhack.models.Accounts.enums.Status;
 import lombok.Data;
-
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 @Entity
 @Data
 public class Checking extends Account implements SecretKeyStatusAccount {

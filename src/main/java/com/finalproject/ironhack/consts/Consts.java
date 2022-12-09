@@ -2,16 +2,21 @@ package com.finalproject.ironhack.consts;
 
 public final class Consts {
 
+    //Generics Generics
+    public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+
     //----------------------------------------------ACCOUNTS RELATED------------------------------------------------------------------------------------------------------------
 
     public static final String CHECKING_ACCOUNT = "Checking";
     public static final String SAVINGS_ACCOUNT = "Savings";
     public static final String CREDITCARD_ACCOUNT = "CreditCard";
 
-    public static final String ACCOUNT_ACCOUNT_HOLDER_NOT_FOUND_ERROR = "Account holder not found";
+    public static final String ACCOUNT_ACCOUNT_HOLDER_NOT_FOUND_ERROR = "User not found";
     public static final String ACCOUNT_ACCOUNT_NOT_FOUND_ERROR = "Account not found";
 
     public static final String ACCOUNT_GENERIC_UNEXPECTED_ERROR = "Error creating the account, read carefully the documentation and try again";
+
+    public static final String ACCOUNT_GENERIC_PENALTY_FEE = "40";
 
     //------------------------SAVINGS ACCOUNT-----------------
     //VALUES
@@ -57,6 +62,9 @@ public final class Consts {
 
     public static final String TRANSFER_DESTINY_ACCOUNT_NOT_FOUND_ERROR = "Destiny account was not found";
     public static final String TRANSFER_ORIGIN_ACCOUNT_NOT_FOUND_ERROR = "Origin account was not found";
+
+    public static final String TRANSFER_FROM_HOLDER_NOT_FOUND_ERROR = "Could not retrieve the transfer from the specified account";
+    public static final String TRANSFER_NOT_FOUND_ERROR = "Could not retrieve the specified transfer";
 
 
 

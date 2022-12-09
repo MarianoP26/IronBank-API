@@ -1,5 +1,6 @@
 package com.finalproject.ironhack.services;
 
+import com.finalproject.ironhack.consts.Consts;
 import com.finalproject.ironhack.models.Agents.Agent;
 import com.finalproject.ironhack.repositories.AgentRepository;
 import com.finalproject.ironhack.security.CustomUserDetails;
@@ -22,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         Optional<Agent> agent = agentRepository.findByName(username);
 
         if(!agent.isPresent()) {
-            throw new UsernameNotFoundException("User does not exist in our database");
+            throw new UsernameNotFoundException(Consts.ACCOUNT_ACCOUNT_HOLDER_NOT_FOUND_ERROR);
         }
 
         CustomUserDetails customUserDetails = new CustomUserDetails(agent.get());

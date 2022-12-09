@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import static com.finalproject.ironhack.consts.Consts.*;
 @Entity
 @Data
 public class Savings extends Account implements InterestAccount, SecretKeyStatusAccount {
@@ -64,9 +65,9 @@ public class Savings extends Account implements InterestAccount, SecretKeyStatus
         if (yearsPassed >= 1) {
             setBalance(getBalance().add((getBalance().multiply(interestRate)).multiply(BigDecimal.valueOf(yearsPassed))));
             try{
-                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                SimpleDateFormat f = new SimpleDateFormat(DATE_FORMAT);
                 String dateString = f.format(new Date());
-                setLastInterestDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(dateString));
+                setLastInterestDate(new SimpleDateFormat(DATE_FORMAT).parse(dateString));
             } catch (ParseException e) {
                 System.err.println("error parsing date @applyInterest");
             }

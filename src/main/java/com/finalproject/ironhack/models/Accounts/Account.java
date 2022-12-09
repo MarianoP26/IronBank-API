@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import static com.finalproject.ironhack.consts.Consts.*;
 
 @Data
 @Entity
@@ -38,7 +39,7 @@ public abstract class Account implements BankAccount {
     private Date creationDate;
 
     @NotNull
-    private BigDecimal penaltyFee = new BigDecimal("40");
+    private BigDecimal penaltyFee = new BigDecimal(ACCOUNT_GENERIC_PENALTY_FEE);
 
     private Date lastTransactionTime;
 
@@ -73,7 +74,7 @@ public abstract class Account implements BankAccount {
     }
 
     public static void fraudCheck(Account account) {
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        SimpleDateFormat f = new SimpleDateFormat(DATE_FORMAT);
         if(account.checkForFraudTransactionTimes(f.format(new Date()))){
             account.freezeAccount();
         }
@@ -83,7 +84,7 @@ public abstract class Account implements BankAccount {
         if (getLastTransactionTime() == null) {
             Date date = null;
             try {
-                date = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(transactionTriggeredTime));
+                date = (new SimpleDateFormat(DATE_FORMAT).parse(transactionTriggeredTime));
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
@@ -92,7 +93,7 @@ public abstract class Account implements BankAccount {
         }
         long secondsPassedBetween = TimeHelperClass.timePassedBetweenInSeconds(transactionTriggeredTime, getLastTransactionTime().toString());
         try {
-            Date date = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(transactionTriggeredTime));
+            Date date = (new SimpleDateFormat(DATE_FORMAT).parse(transactionTriggeredTime));
             setLastTransactionTime(date);
             return secondsPassedBetween <= 1;
         }

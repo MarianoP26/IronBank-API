@@ -48,12 +48,12 @@ public class TransferService implements TransferServiceInterface {
 
     @Override
     public Transfer getTransferById(Long id) {
-        return transferRepository.findById(id).get();
+        return transferRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, TRANSFER_NOT_FOUND_ERROR));
     }
 
     @Override
     public List<Transfer> getAllTransferFromAccount(Long id) {
-        Account account = accountRepository.findById(id).get();
+        Account account = accountRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, TRANSFER_FROM_HOLDER_NOT_FOUND_ERROR));
         return transferRepository.findByOrigin(account);
     }
 

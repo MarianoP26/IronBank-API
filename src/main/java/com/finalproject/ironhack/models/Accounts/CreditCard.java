@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import static com.finalproject.ironhack.consts.Consts.*;
 
 @Entity
 @Data
@@ -64,7 +65,7 @@ public class CreditCard extends Account implements InterestAccount {
     @Override
     public boolean checkForFraudTransactionTimes(String transactionTriggeredTime) {
         try{
-            setLastTransactionTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(transactionTriggeredTime));
+            setLastTransactionTime(new SimpleDateFormat(DATE_FORMAT).parse(transactionTriggeredTime));
         }
         catch (ParseException e) {
             System.err.println("error");
@@ -78,9 +79,9 @@ public class CreditCard extends Account implements InterestAccount {
         if (monthsPassed >= 1) {
             setBalance(getBalance().add((getBalance().multiply(interestRate.divide(BigDecimal.valueOf(12)))).multiply(BigDecimal.valueOf(monthsPassed))));
             try{
-                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                SimpleDateFormat f = new SimpleDateFormat(DATE_FORMAT);
                 String dateString = f.format(new Date());
-                setLastInterestDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(dateString));
+                setLastInterestDate(new SimpleDateFormat(DATE_FORMAT).parse(dateString));
             } catch (ParseException e) {
                 System.err.println("error parsing date @applyInterest");
             }
